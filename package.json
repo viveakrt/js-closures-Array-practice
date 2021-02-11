@@ -2,9 +2,10 @@
   "name": "mountblue_vivek",
   "version": "1.0.0",
   "description": "MountBlue",
-  "main": "index.js",
+  "main": "array.js",
   "scripts": {
-    "test": "test.js"
+    "start": "node array.js",
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
