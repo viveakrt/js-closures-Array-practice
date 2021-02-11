@@ -54,7 +54,22 @@ function find(elements, cb) {
     }
     return undefined;
 }
+/**
+ * This method creates a new array with all elements that pass the test implemented by the provided function.
+ * @param {array} elements 
+ * @param {function} cb 
+ */
+function filter(elements, cb) {
+    let newArray = [];
+    for(let i=0;i < elements.length ; i++){
+        if (cb(elements[i])) {
+            newArray.push(elements[i]);
+        }
+    }
+    return newArray;
+}
 
 
-module.exports = {each,map,reduce,find}
+
+module.exports = {each,map,reduce,find,filter}
 
