@@ -1,0 +1,19 @@
+{
+  "name": "mountblue_vivek",
+  "version": "1.0.0",
+  "description": "MountBlue",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/viveak/mountblue_vivek.git"
+  },
+  "author": "Vivek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/viveak/mountblue_vivek/issues"
+  },
+  "homepage": "https://gitlab.com/viveak/mountblue_vivek#readme"
+}
