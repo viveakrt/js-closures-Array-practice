@@ -59,6 +59,7 @@ function find(elements, cb) {
  * @param {array} elements 
  * @param {function} cb 
  */
+
 function filter(elements, cb) {
     let newArray = [];
     for(let i=0;i < elements.length ; i++){
