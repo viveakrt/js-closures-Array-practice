@@ -41,6 +41,20 @@ function reduce(elements, cb, startingValue) {
     }
     return result;
 }
+/**
+ * This method returns the value of the first element in the provided array that satisfies the provided testing function. If no values satisfies the testing function, undefined is returned.
+ * @param {array} elements 
+ * @param {function} cb 
+ */
+function find(elements, cb) {
+    for(let i=0;i < elements.length ; i++){
+        if (cb(elements[i])) {
+            return elements[i];
+        }
+    }
+    return undefined;
+}
 
-module.exports = {each,map,reduce}
+
+module.exports = {each,map,reduce,find}
 
