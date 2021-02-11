@@ -48,7 +48,7 @@ function reduce(elements, cb, startingValue) {
  */
 function find(elements, cb) {
     for(let i=0;i < elements.length ; i++){
-        if (cb(elements[i])) {
+        if (cb(elements[i],i ,elements)) {
             return elements[i];
         }
     }
@@ -63,14 +63,27 @@ function find(elements, cb) {
 function filter(elements, cb) {
     let newArray = [];
     for(let i=0;i < elements.length ; i++){
-        if (cb(elements[i])) {
+        if (cb(elements[i], i , elements)) {
             newArray.push(elements[i]);
         }
     }
     return newArray;
 }
+/**
+ * Flattens a nested array (the nesting can be to any depth).
+ * @param {array} elements 
+ */
+function flatten(elements) {
+    return reduce(elements, (acc, item) => {
+        if (Array.isArray(item)) {
+            acc = acc.concat(flatten(item))
+        }else {
+            acc.push(item)
+        }
+        return acc;
+    }, [])
+} 
 
 
-
-module.exports = {each,map,reduce,find,filter}
+module.exports = {each,map,reduce,find,filter,flatten}
 
