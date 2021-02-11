@@ -29,5 +29,28 @@ function limitFunctionCallCount(cb, n) {
     }
     return invoke;
 }
+/**
+ * 
+ * @param {function} cb 
+ */
+function cacheFunction(cb) {
+    let cache = {};
+    let counter = counterFactory();
+    function invoke() {
+        for( let key in cache) {
+            if (cache[key] === [...arguments].sort().join(","))
+            {
+                return cache[key+'r'];
+            }
+        }
+        cache[counter.count] = [...arguments].sort().join(",");
+        cache[counter.count + 'r'] = cb(...arguments);
+        result = cache[counter.count + 'r'];
+        counter.increment();
+        return result;
+        
+    }
+    return invoke;
+}
 
-module.exports = {counterFactory,limitFunctionCallCount}
+module.exports = {counterFactory,limitFunctionCallCount,cacheFunction}
