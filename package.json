@@ -5,7 +5,7 @@
   "main": "array.js",
   "scripts": {
     "start": "node array.js",
-    "test": "node test.js"
+    "test": "node testa.js"
   },
   "repository": {
     "type": "git",
