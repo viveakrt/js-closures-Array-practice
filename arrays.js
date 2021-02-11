@@ -22,5 +22,25 @@ function map(elements, cb) {
     }
     return array;
 }
-module.exports = map
-module.exports = each
+/**
+ * This method executes a reducer function (that you provide) on each element of the array, resulting in single output value.
+ * @param {array} elements 
+ * @param {function} cb 
+ * @param {number} startingValue 
+ */
+function reduce(elements, cb, startingValue) {
+    let result = startingValue ? startingValue : elements[0]
+    if (startingValue) {
+        for (let i=0; i<elements.length; i++) {
+            result = cb(result, elements[i], i, elements)
+        }
+    }else {
+        for (let i=1; i<elements.length; i++) {
+            result = cb(result, elements[i], i, elements)
+        }
+    }
+    return result;
+}
+
+module.exports = {each,map,reduce}
+
