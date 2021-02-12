@@ -33,3 +33,15 @@ function mapObject(obj, cb) {
     }
     return obj;
 }
+
+/**
+ * pair method return array of arrays
+ * @param {object} obj 
+ */
+function pairs(obj) {
+    let pair = [];
+    for (let i in obj) {
+        pair.push([i, obj[i]]);
+    }
+    return pair;
+}
