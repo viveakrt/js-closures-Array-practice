@@ -4,9 +4,11 @@
  */
 function keys(obj) {
     let keys = [];
+
     for (let i in obj) {
         keys.push(i);
     }
+
     return keys;
 }
 /**
@@ -15,6 +17,7 @@ function keys(obj) {
  */
 function values(obj) {
     let values = [];
+
     for (let i in obj) {
         values.push(obj[i]);
     }
@@ -27,10 +30,12 @@ function values(obj) {
  * @param {function} cb 
  */
 function mapObject(obj, cb) {
+
     for (let i in obj) {
         let newObj = cb(obj[i], i, obj);
         obj[i] = newObj;
     }
+
     return obj;
 }
 
@@ -40,9 +45,11 @@ function mapObject(obj, cb) {
  */
 function pairs(obj) {
     let pair = [];
+
     for (let i in obj) {
         pair.push([i, obj[i]]);
     }
+
     return pair;
 }
 
@@ -52,9 +59,11 @@ function pairs(obj) {
  */
 function invert(obj) {
     let newObj = {}
+
     for (let i in obj) {
         newObj[obj[i]] = i;
     }
+
     return newObj;
 }
 
@@ -64,13 +73,22 @@ function invert(obj) {
  * @param {object} defaultProps 
  */
 function defaults(obj, defaultProps) {
+
     for (let i in defaultProps) {
         if (!(i in obj)) {
             obj[i] = defaultProps[i];
         }
     }
+
     return obj
 }
 
 
-module.exports = {keys,values,mapObject,pairs,invert,defaults}
+module.exports = {
+    keys,
+    values,
+    mapObject,
+    pairs,
+    invert,
+    defaults
+}

@@ -3,10 +3,12 @@
  * @param {array} elements 
  * @param {function} cb 
  */
-function each(elements, cb){
-    for(let i=0;i < elements.length ; i++){
-        cb(elements[i],i,elements);    
+function each(elements, cb) {
+
+    for (let index = 0; index < elements.length; index++) {
+        cb(elements[index], index, elements);
     }
+
     return undefined
 }
 /**
@@ -15,11 +17,14 @@ function each(elements, cb){
  * @param {function} cb 
  */
 function map(elements, cb) {
+
     let array = [];
-    for(let i=0;i < elements.length ; i++){
-        let value = cb(elements[i], i, elements);
+
+    for (let index = 0; index < elements.length; index++) {
+        let value = cb(elements[index], index, elements);
         array.push(value);
     }
+
     return array;
 }
 /**
@@ -29,29 +34,32 @@ function map(elements, cb) {
  * @param {number} startingValue 
  */
 function reduce(elements, cb, startingValue) {
+
     let result = startingValue ? startingValue : elements[0]
+    let index = 1
     if (startingValue) {
-        for (let i=0; i<elements.length; i++) {
-            result = cb(result, elements[i], i, elements)
-        }
-    }else {
-        for (let i=1; i<elements.length; i++) {
-            result = cb(result, elements[i], i, elements)
-        }
+        index = 0
+    }
+    for (; index < elements.length; index++) {
+        result = cb(result, elements[index], index, elements)
     }
     return result;
 }
+
+
 /**
  * This method returns the value of the first element in the provided array that satisfies the provided testing function. If no values satisfies the testing function, undefined is returned.
  * @param {array} elements 
  * @param {function} cb 
  */
 function find(elements, cb) {
-    for(let i=0;i < elements.length ; i++){
-        if (cb(elements[i],i ,elements)) {
-            return elements[i];
+
+    for (let index = 0; index < elements.length; index++) {
+        if (cb(elements[index], index, elements)) {
+            return elements[index];
         }
     }
+
     return undefined;
 }
 /**
@@ -61,10 +69,12 @@ function find(elements, cb) {
  */
 
 function filter(elements, cb) {
+
     let newArray = [];
-    for(let i=0;i < elements.length ; i++){
-        if (cb(elements[i], i , elements)) {
-            newArray.push(elements[i]);
+
+    for (let index = 0; index < elements.length; index++) {
+        if (cb(elements[index], index, elements)) {
+            newArray.push(elements[index]);
         }
     }
     return newArray;
@@ -75,17 +85,26 @@ function filter(elements, cb) {
  * @param {array} elements 
  */
 function flatten(elements) {
+
     let newArray = [];
     for (let item of elements) {
+
         if (Array.isArray(item)) {
             newArray = newArray.concat(flatten(item));
-        }else {
+        } else {
             newArray.push(item);
         }
     }
+
     return newArray;
 }
 
 
-module.exports = {each,map,reduce,find,filter,flatten}
-
+module.exports = {
+    each,
+    map,
+    reduce,
+    find,
+    filter,
+    flatten
+}
