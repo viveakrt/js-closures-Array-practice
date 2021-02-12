@@ -71,6 +71,7 @@ function filter(elements, cb) {
 }
 /**
  * Flattens a nested array (the nesting can be to any depth).
+ * 
  * @param {array} elements 
  */
 function flatten(elements) {
