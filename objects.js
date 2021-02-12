@@ -9,5 +9,14 @@ function keys(obj) {
     }
     return keys;
 }
-
-
+/**
+ * Value Method return array of values in object
+ * @param {object} obj 
+ */
+function values(obj) {
+    let values = [];
+    for (let i in obj) {
+        values.push(obj[i]);
+    }
+    return values;
+}
