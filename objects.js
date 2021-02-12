@@ -45,3 +45,15 @@ function pairs(obj) {
     }
     return pair;
 }
+
+/**
+ * inverted method return value of key
+ * @param {object} obj 
+ */
+function invert(obj) {
+    let newObj = {}
+    for (let i in obj) {
+        newObj[obj[i]] = i;
+    }
+    return newObj;
+}
