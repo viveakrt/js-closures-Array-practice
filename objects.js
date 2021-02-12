@@ -57,3 +57,20 @@ function invert(obj) {
     }
     return newObj;
 }
+
+/**
+ * defaults return same object
+ * @param {object} obj 
+ * @param {object} defaultProps 
+ */
+function defaults(obj, defaultProps) {
+    for (let i in defaultProps) {
+        if (!(i in obj)) {
+            obj[i] = defaultProps[i];
+        }
+    }
+    return obj
+}
+
+
+module.exports = {keys,values,mapObject,pairs,invert,defaults}
