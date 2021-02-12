@@ -74,15 +74,16 @@ function filter(elements, cb) {
  * @param {array} elements 
  */
 function flatten(elements) {
-    return reduce(elements, (acc, item) => {
+    let newArray = [];
+    for (let item of elements) {
         if (Array.isArray(item)) {
-            acc = acc.concat(flatten(item))
+            newArray = newArray.concat(flatten(item));
         }else {
-            acc.push(item)
+            newArray.push(item);
         }
-        return acc;
-    }, [])
-} 
+    }
+    return newArray;
+}
 
 
 module.exports = {each,map,reduce,find,filter,flatten}
