@@ -41,6 +41,7 @@ function limitFunctionCallCount(cb, n) {
 
 function cacheFunction(cb) {
     let cache = {};
+    
     function invoke(arg){
         if(arg in cache)  return cache[arg];
         else{
@@ -49,6 +50,7 @@ function cacheFunction(cb) {
             return resultCache;
         }
     }
+    
     return invoke
 }
 
