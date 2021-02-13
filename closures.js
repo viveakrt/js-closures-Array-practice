@@ -2,16 +2,17 @@
  * Return an object that has two methods called `increment` and `decrement`.
  */
 function counterFactory() {
-    
+    var count=0
+    var inc = function () {
+        count++;
+    }
+    var dec = function() {
+        count--;
+    }
     return {
-        count: 0,
         
-        increment: function () {
-            this.count++;
-        },
-        decrement: function() {
-            this.count--;
-        }
+        increment: inc,
+        decrement: dec
     }
 }
 
@@ -21,12 +22,10 @@ function counterFactory() {
  * @param {number} n 
  */
 function limitFunctionCallCount(cb, n) {
-    let count = counterFactory();
-    
+    let count = 0;
     function invoke() {
-        
-        if (count.count < n) {
-            count.increment();
+        if (count < n) {
+            count++;
             return cb();
         }else {
             return null;
@@ -39,28 +38,18 @@ function limitFunctionCallCount(cb, n) {
  * 
  * @param {function} cb 
  */
- function cacheFunction(cb) {
-    let cache = {};
-    let counter = counterFactory();
-    
-    function invoke() {
-        
-        for( let key in cache) {
-            
-            if (cache[key] === [...arguments].sort().join(",")){                
-                return cache[key+'r'];
-            }
-        }
 
-        cache[counter.count] = [...arguments].sort().join(",");
-        cache[counter.count + 'r'] = cb(...arguments);
-        result = cache[counter.count + 'r'];
-        counter.increment();
-        
-        return result;
-        
+function cacheFunction(cb) {
+    let cache = {};
+    function invoke(arg){
+        if(arg in cache)  return cache[arg];
+        else{
+            let resultCache = cb(arg);
+            cache[arg] = resultCache;
+            return resultCache;
+        }
     }
-    return invoke;
+    return invoke
 }
 
 module.exports = {
