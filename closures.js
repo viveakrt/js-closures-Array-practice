@@ -2,18 +2,18 @@
  * Return an object that has two methods called `increment` and `decrement`.
  */
 function counterFactory() {
-    var count=0
-    var inc = function () {
+    let count=0;
+    let inc = function () {
         count++;
     }
-    var dec = function() {
+    let dec = function() {
         count--;
     }
     return {
         
         increment: inc,
         decrement: dec
-    }
+    };
 }
 
 /**
@@ -51,7 +51,7 @@ function cacheFunction(cb) {
         }
     }
     
-    return invoke
+    return invoke;
 }
 
 module.exports = {

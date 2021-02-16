@@ -16,9 +16,9 @@ newArray.reduce((c,next) => checkIs(next))
 function checkIs(next){
     
     if(next%2 == 0){
-        obj.even = obj.even + next
+        obj.even = obj.even + next;
     }else{
-    obj.odd += next
+    obj.odd += next;
     }
 }
 
